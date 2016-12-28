@@ -46,7 +46,16 @@ Run the following command:
     flush privileges;
 
     quit
-    
+### Note : If you are getting Unknown column 'password' in 'field list' error please use the following procedure  
+    use mysql;
+
+    update user set authentication_string="mynewpassword" where User='root';
+
+    flush privileges;
+
+    quit
+Reason: In MySQL 5.7, the password field in mysql.user table field was removed, now the field name is 'authentication_string'.
+
 ### Stop and start the MySQL service
 (Ubuntu and Debian) Run the following commands:
 
